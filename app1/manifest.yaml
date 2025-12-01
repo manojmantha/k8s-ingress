@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1
+  # labels of deployment resource
   labels:
     app: app1
 spec:
@@ -35,14 +36,13 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app1 
+  name: app1
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:339712871533:certificate/0af9aaa6-3f8f-49ac-80ef-b51b05ec9927
     alb.ingress.kubernetes.io/group.name: manojmantha
----
 spec:
   ingressClassName: alb
   rules:
